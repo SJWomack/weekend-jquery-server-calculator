@@ -6,6 +6,7 @@ function onReady() {
     $('.calc-btn').on('click', onNumberOrOperatorClick);
     $('#clear-display').on('click', handleClearDisplay);
     $('#btn-equals').on('click', postPackageHandler)
+    $('#empty-reel').on('click', handleReelDelete);
 }
 
 let firstNum = '';
@@ -22,7 +23,7 @@ function appendCalcDisplay() {
 
 function onNumberOrOperatorClick(evt) {
     evt.preventDefault()
-    if ($(this).text() === '+' || $(this).text() === '-' ||$(this).text() ===  '*' || $(this).text() === '/') {
+    if ($(this).text() === '+' || $(this).text() === '-' || $(this).text() === '*' || $(this).text() === '/') {
         firstValBool = false;
         console.log(firstValBool);
 
@@ -38,7 +39,7 @@ function onNumberOrOperatorClick(evt) {
         console.log(secondNum);
     }
 
-    console.log( 'text value',$(this).text())
+    console.log('text value', $(this).text())
 
     appendCalcDisplay();
 }
@@ -62,15 +63,15 @@ function postPackageHandler(evt) {
 }
 
 function handlePost() {
-    if (postPackage.firstNumber === ''){
+    if (postPackage.firstNumber === '') {
         alert('Please input a first number.');
         return false;
     }
-    else if (postPackage.operator === ''){
+    else if (postPackage.operator === '') {
         alert('Please input an operator (+, -, *, /).');
         return false;
     }
-    else if (postPackage.secondNumber === ''){
+    else if (postPackage.secondNumber === '') {
         alert('Please input a second number.')
         return false;
     }
@@ -89,7 +90,7 @@ function handlePost() {
 }
 
 
-function handleGet(){
+function handleGet() {
     $.ajax({
         url: '/answerArray',
         method: 'GET',
@@ -97,8 +98,20 @@ function handleGet(){
         console.log(response)
         $('#history-list').empty();
         for (let equation of response)
-        $('#history-list').append(`<li> ${equation.numberOne} ${equation.operator} ${equation.numberTwo} = ${equation.answer}
+            $('#history-list').append(`<li> ${equation.numberOne} ${equation.operator} ${equation.numberTwo} = ${equation.answer}
         `)
     })
 }
 
+function handleReelDelete(evt) {
+    evt.preventDefault();
+    $.ajax({
+        url: '/emptySolved',
+        method: 'DELETE'
+    }).then((response) => {
+        console.log('delete', response);
+        handleGet();
+        
+    })
+
+}

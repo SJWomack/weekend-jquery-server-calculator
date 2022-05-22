@@ -36,7 +36,11 @@ app.get('/answerArray', (req, res) =>{
   res.send(solvedEquations);
 })
 
-
+app.delete('/emptySolved', (req, res) => {
+  solvedEquations = [];
+  console.log ('in dele', solvedEquations);
+  res.send('Delete req received')
+})
 
 
 
