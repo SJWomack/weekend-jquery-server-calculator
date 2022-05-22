@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,43 +10,52 @@
     <link rel="stylesheet" href="styles.css">
     <title>Server Calculator</title>
 </head>
+
 <body>
-<header>Calc It!</header>
-<form id="calc-form">
-<table>
-    <thead>
-        <input id="calc-display" require>
-        <button id="btn-equals">=</button>
-        <button id="clear-display">C</button>
-    </thead>
-    <tbody>
-        <tr>
-            <td><button class="calc-btn" id="btn-7">7</button></td>
-            <td><button class="calc-btn" id="btn-8">8</button></td>
-            <td><button class="calc-btn" id="btn-9">9</button></td>
-            <td><button class="calc-btn" id="btn-multiply">*</button></td>
-        </tr>
-        <tr>
-            <td><button class="calc-btn" id="btn-4">4</button></td>
-            <td><button class="calc-btn" id="btn-5">5</button></td>
-            <td><button class="calc-btn" id="btn-6">6</button></td>
-            <td><button class="calc-btn" id="btn-divide">/</button></td>
-        </tr>
-        <tr>
-            <td><button class="calc-btn" id="btn-1">1</button></td>
-            <td><button class="calc-btn" id="btn-2">2</button></td>
-            <td><button class="calc-btn" id="btn-3">3</button></td>
-            <td><button class="calc-btn" id="btn-subtract">-</button></td>
-        </tr>
-        <tr>
-            <td><button class="calc-btn" id="btn-0">0</button></td>
-            <td><button class="calc-btn" id="btn-decimal">.</button></td>
-            <td><button class="calc-btn" id="btn-divide">/</button></td>
-            <td><button class="calc-btn" id="btn-add">+</button></td>
-        </tr>
-    </tbody>
-</form>
-</table>
-    
+    <header>Calc It!</header>
+    <form id="calc-form">
+        <table>
+            <thead>
+                <input id="calc-display" disabled require>
+                <button id="btn-equals">=</button>
+                <button id="clear-display">C</button>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><button class="calc-btn" id="btn-7">7</button></td>
+                    <td><button class="calc-btn" id="btn-8">8</button></td>
+                    <td><button class="calc-btn" id="btn-9">9</button></td>
+                    <td><button class="calc-btn" id="btn-multiply">*</button></td>
+                </tr>
+                <tr>
+                    <td><button class="calc-btn" id="btn-4">4</button></td>
+                    <td><button class="calc-btn" id="btn-5">5</button></td>
+                    <td><button class="calc-btn" id="btn-6">6</button></td>
+                    <td><button class="calc-btn" id="btn-divide">/</button></td>
+                </tr>
+                <tr>
+                    <td><button class="calc-btn" id="btn-1">1</button></td>
+                    <td><button class="calc-btn" id="btn-2">2</button></td>
+                    <td><button class="calc-btn" id="btn-3">3</button></td>
+                    <td><button class="calc-btn" id="btn-subtract">-</button></td>
+                </tr>
+                <tr>
+                    <td><button class="calc-btn" id="btn-0">0</button></td>
+                    <td><button class="calc-btn" id="btn-decimal">.</button></td>
+                    <td><button class="calc-btn" id="btn-divide">/</button></td>
+                    <td><button class="calc-btn" id="btn-add">+</button></td>
+                </tr>
+            </tbody>
+    </form>
+    </table>
+
+    <div id="reel">
+        <h2>History:</h2>
+
+        <ul id="history-list">
+
+        </ul>
+    </div>
 </body>
+
 </html>
