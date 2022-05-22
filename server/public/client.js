@@ -10,18 +10,22 @@ function onReady() {
     $('#history-list').on('click', '.reel-itm', grabEquation)
 }
 
+//establish variables I'll be using
 let firstNum = '';
 let firstValBool = true;
 let secondNum = '';
 let operator = '';
 let postPackage = {};
 
-
+//handles appending input equation to calc display
 function appendCalcDisplay() {
     console.log('in append calc')
     $('#calc-display').val(firstNum + ' ' + operator + ' ' + secondNum)
 }
 
+//handles the switch from imputing first number to inputting second number
+//achieved by any operator input changing first val boolean to false
+//signaling the second value input
 function onNumberOrOperatorClick(evt) {
     evt.preventDefault()
    if ($(this).text() === '+' || $(this).text() === '-' || $(this).text() === '*' || $(this).text() === '/') {
@@ -45,6 +49,7 @@ function onNumberOrOperatorClick(evt) {
     appendCalcDisplay();
 }
 
+//handles clearing of display and resetting all input values
 function handleClearDisplay() {
     $('#calc-display').val('');
     firstNum = '';
@@ -54,6 +59,7 @@ function handleClearDisplay() {
 
 }
 
+//handles creation of object that will be sent in post request
 function postPackageHandler(evt) {
     evt.preventDefault();
     postPackage.firstNumber = firstNum;
@@ -63,6 +69,8 @@ function postPackageHandler(evt) {
     handlePost();
 }
 
+//checks that no inputs are empty then 
+//sends post request and shows answer in calc display
 function handlePost() {
     if (postPackage.firstNumber === '') {
         alert('Please input a first number.');
@@ -91,7 +99,7 @@ function handlePost() {
     })
 }
 
-
+//handles the get request and appends all equations stored server side on to the dom
 function handleGet() {
     $.ajax({
         url: '/answerArray',
@@ -104,6 +112,8 @@ function handleGet() {
     })
 }
 
+
+//handles delete request to clear server side equation storage
 function handleReelDelete(evt) {
     evt.preventDefault();
     $.ajax({
@@ -117,6 +127,7 @@ function handleReelDelete(evt) {
 
 }
 
+//grabs hidden answer of past equation displayed on dom and displays in calc display
 function grabEquation(){
   newInput =  $(this).children().text();
   $('#calc-display').val(newInput);
