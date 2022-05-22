@@ -57,12 +57,24 @@ function postPackageHandler(evt) {
     postPackage.firstNumber = firstNum;
     postPackage.secondNumber = secondNum;
     postPackage.operator = operator;
-    handleClearDisplay();
     console.log(postPackage);
     handlePost();
 }
 
 function handlePost() {
+    if (postPackage.firstNumber === ''){
+        alert('Please input a first number.');
+        return false;
+    }
+    else if (postPackage.operator === ''){
+        alert('Please input an operator (+, -, *, /).');
+        return false;
+    }
+    else if (postPackage.secondNumber === ''){
+        alert('Please input a second number.')
+        return false;
+    }
+
     $.ajax({
         url: '/equation',
         method: 'POST',
@@ -71,6 +83,7 @@ function handlePost() {
         console.log(response)
         postPackage = {};
         console.log(postPackage);
+        handleClearDisplay();
         handleGet();
     })
 }
