@@ -14,6 +14,10 @@ const math = require('./modules/math')
 
 let solvedEquations = require('./modules/solvedEquationArray')
 
+
+//takes in post object and calculates answer
+//then packages and sends to storage array
+//responds with answer to equation
 app.post('/equation',(req, res) => {
   let operator = req.body.operator;
   let num1 = req.body.firstNumber;
@@ -28,15 +32,21 @@ app.post('/equation',(req, res) => {
   });
 
   console.log(solvedEquations);
-  res.sendStatus('201');
+  res.send(`${answer}`);
 })
 
+//takes get request and sends back storage array
 app.get('/answerArray', (req, res) =>{
   console.log('in get',solvedEquations);
   res.send(solvedEquations);
 })
 
-
+//takes delete request and clears storage array
+app.delete('/emptySolved', (req, res) => {
+  solvedEquations = [];
+  console.log ('in dele', solvedEquations);
+  res.send('Delete req received')
+})
 
 
 
