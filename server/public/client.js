@@ -7,6 +7,7 @@ function onReady() {
     $('#clear-display').on('click', handleClearDisplay);
     $('#btn-equals').on('click', postPackageHandler)
     $('#empty-reel').on('click', handleReelDelete);
+    $('#history-list').on('click', '.reel-itm', grabEquation)
 }
 
 let firstNum = '';
@@ -23,7 +24,7 @@ function appendCalcDisplay() {
 
 function onNumberOrOperatorClick(evt) {
     evt.preventDefault()
-    if ($(this).text() === '+' || $(this).text() === '-' || $(this).text() === '*' || $(this).text() === '/') {
+   if ($(this).text() === '+' || $(this).text() === '-' || $(this).text() === '*' || $(this).text() === '/') {
         firstValBool = false;
         console.log(firstValBool);
 
@@ -85,6 +86,7 @@ function handlePost() {
         postPackage = {};
         console.log(postPackage);
         handleClearDisplay();
+        $('#calc-display').val(response);
         handleGet();
     })
 }
@@ -98,8 +100,7 @@ function handleGet() {
         console.log(response)
         $('#history-list').empty();
         for (let equation of response)
-            $('#history-list').append(`<li> ${equation.numberOne} ${equation.operator} ${equation.numberTwo} = ${equation.answer}
-        `)
+            $('#history-list').append(`<li class="reel-itm"> ${equation.numberOne} ${equation.operator} ${equation.numberTwo} <span class='answer' hidden>${equation.answer}</span></li>`)
     })
 }
 
@@ -111,7 +112,12 @@ function handleReelDelete(evt) {
     }).then((response) => {
         console.log('delete', response);
         handleGet();
-        
+
     })
 
+}
+
+function grabEquation(){
+  newInput =  $(this).children().text();
+  $('#calc-display').val(newInput);
 }

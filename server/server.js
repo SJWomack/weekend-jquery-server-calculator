@@ -28,7 +28,7 @@ app.post('/equation',(req, res) => {
   });
 
   console.log(solvedEquations);
-  res.sendStatus('201');
+  res.send(`${answer}`);
 })
 
 app.get('/answerArray', (req, res) =>{

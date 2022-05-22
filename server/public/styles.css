@@ -1,0 +1,36 @@
+.reel-itm:hover {
+    background-color: lightblue;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.functionality {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.calc-table {
+
+    width: fit-content;
+    height: fit-content;
+    margin: 10% 5%;
+    border: 2px solid gray;
+}
+
+.calc-btn {
+    width: 20px;
+    height: 25px;
+    margin: 5px;
+}
+
+
+tbody {
+    border-collapse: collapse;
+    margin: 0;
+}
+
+#reel {
+    border: 2px solid grey;
+    margin: 10% 5%;
+}
