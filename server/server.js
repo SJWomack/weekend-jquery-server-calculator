@@ -6,7 +6,7 @@ const PORT = 5000;
 
 // This must be added before GET & POST routes.
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.json());
 // Serve up static files (HTML, CSS, Client JS)
 app.use(express.static('server/public'));
 
